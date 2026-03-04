@@ -104,7 +104,7 @@ const userPatchSchema = {
 };
 
 // ---- 路由（与原版保持一致） ----
-app.get('/health', async () => ({ ok: true }));
+app.get('/health', async () => ({ ok: true, author:'yuyue0534', time: new Date() }));
 
 app.post('/users', { schema: { body: userBodySchema } }, async (req, reply) => {
     const { name, email, age = null } = req.body;
@@ -272,4 +272,5 @@ app.listen({ port: PORT, host: HOST })
         app.log.error(err);
         process.exit(1);
     });
+
 
