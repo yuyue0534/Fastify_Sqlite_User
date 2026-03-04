@@ -263,9 +263,13 @@ app.delete('/users/:id', {
 });
 
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || '127.0.0.1';
+// const HOST = process.env.HOST || '127.0.0.1';
+// 【关键修改】获取 Host，如果没有环境变量，默认为 '0.0.0.0' 以允许外部访问
+// 0.0.0.0 表示监听所有网络接口，而 127.0.0.1 只监听内部
+const HOST = process.env.HOST || '0.0.0.0'; 
 app.listen({ port: PORT, host: HOST })
     .catch(err => {
         app.log.error(err);
         process.exit(1);
     });
+
